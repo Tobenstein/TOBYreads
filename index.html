@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toby Library</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <div class="brand">
+          <div class="brand-identity">
+            <button class="brand-mark profile-entry" data-view="profile" type="button" aria-label="Open Hilary's profile" title="Open profile">H</button>
+            <div>
+              <strong>Toby~</strong>
+              <span>Hilary's library</span>
+            </div>
+          </div>
+          <button class="icon-button menu-button" id="utilitiesButton" type="button" aria-label="Open tools menu" title="Tools">☰</button>
+        </div>
+
+        <section class="storage-panel" aria-labelledby="storage-title">
+          <h2 id="storage-title">Library Health</h2>
+          <div class="storage-meter" aria-label="Storage use">
+            <span style="width: 68%"></span>
+          </div>
+          <div class="storage-stats">
+            <span>248 titles</span>
+            <span>412 GB</span>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="pageEyebrow">All-in-one reading</p>
+            <h1 id="pageTitle">Home</h1>
+          </div>
+          <div class="topbar-actions">
+            <label class="search hidden-control" for="searchInput">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput" type="search" placeholder="Search series, authors, narrators" />
+            </label>
+            <section class="section-tabs hidden" id="comicsTabs" aria-label="Comics and manga filters">
+              <button class="section-tab active" data-filter="comic" type="button">Comics</button>
+              <button class="section-tab" data-filter="manga" type="button">Manga</button>
+            </section>
+            <section class="mode-tabs hidden" aria-label="Media filters">
+              <button class="tab active" data-filter="all" type="button">All</button>
+              <button class="tab" data-filter="manga" type="button">Manga</button>
+              <button class="tab" data-filter="comic" type="button">Comics</button>
+              <button class="tab" data-filter="ebook" type="button">eBooks</button>
+              <button class="tab" data-filter="audio" type="button">Audio</button>
+            </section>
+          </div>
+        </header>
+
+        <section class="home-view" id="homeView" aria-label="Home">
+          <section class="home-hero" aria-labelledby="resume-title">
+            <div class="section-heading">
+              <div>
+                <h2 id="resume-title">Resume your journey...</h2>
+                <p>Pick up across pages, panels, chapters, and audio sessions.</p>
+              </div>
+            </div>
+            <div class="rail resume-rail" id="resumeRail"></div>
+          </section>
+
+          <div class="home-rails" id="homeRails"></div>
+        </section>
+
+        <section class="library-view hidden" id="libraryView" aria-label="Library">
+          <div class="content-layout">
+            <aside class="detail-panel" aria-live="polite">
+              <div class="section-heading continue-heading">
+                <div>
+                  <h2 id="continueTitle">Continue</h2>
+                  <p id="continueSubtitle">Resume your current title</p>
+                </div>
+              </div>
+              <div class="detail-cover" id="detailCover"></div>
+              <div class="detail-copy">
+                <span class="pill" id="detailType">Manga</span>
+                <h2 id="detailTitle">Title</h2>
+                <p id="detailMeta">Meta</p>
+                <p id="detailDescription">Description</p>
+              </div>
+              <div class="progress-block">
+                <div class="progress-label">
+                  <span>Progress</span>
+                  <strong id="detailProgressText">0%</strong>
+                </div>
+                <div class="progress-track"><span id="detailProgressBar"></span></div>
+              </div>
+              <div class="detail-actions">
+                <button class="primary-button" id="openButton" type="button">Open</button>
+                <button class="ghost-button" id="queueButton" type="button">Queue next</button>
+              </div>
+            </aside>
+
+            <section class="library-panel" aria-label="Library titles">
+              <div class="section-heading">
+                <div>
+                  <h2>Library</h2>
+                  <p>Synced progress across every format</p>
+                </div>
+                <button class="ghost-button" type="button" id="sortButton">Sort: Recent</button>
+              </div>
+              <div class="title-grid" id="titleGrid"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="profile-view hidden" id="profileView" aria-label="Profile">
+          <section class="profile-hero">
+            <div class="profile-avatar" aria-hidden="true">H</div>
+            <div class="profile-intro">
+              <span class="pill">Member since 2023</span>
+              <h2>Hilary</h2>
+              <p class="profile-details">
+                <span>33</span>
+                <span class="profile-symbol" aria-label="Nonbinary">⚧</span>
+                <span>she/they</span>
+                <span class="ireland-flag" aria-label="Ireland" role="img"></span>
+              </p>
+              <div class="intro-genres" aria-label="Favourite genres">
+                <span>Thrillers</span>
+                <span>Horror</span>
+                <span>Historical fiction</span>
+              </div>
+              <p>Thriller devourer, horror apologist, historical fiction loyalist. Here for haunted houses, unreliable narrators, doomed queens, and a reading graph that quietly judges no one.</p>
+            </div>
+          </section>
+
+          <section class="analytics-grid" aria-label="Reading analytics">
+            <article class="metric-card">
+              <span>2026 reads</span>
+              <strong>41</strong>
+              <p>On pace for 96 by year end</p>
+            </article>
+            <article class="metric-card">
+              <span>Average per year</span>
+              <strong>93</strong>
+              <p>Across books, comics, manga, and audio</p>
+            </article>
+            <article class="metric-card">
+              <span>Current streak</span>
+              <strong>28 days</strong>
+              <p>Best streak: 74 days</p>
+            </article>
+            <article class="metric-card">
+              <span>Pages listened/read</span>
+              <strong>18.6k</strong>
+              <p>Plus 126 audio hours</p>
+            </article>
+          </section>
+
+          <section class="profile-panel" aria-labelledby="yearly-title">
+            <div class="section-heading">
+              <div>
+                <h2 id="yearly-title">Reading by year</h2>
+                <p>Incremental dummy data from Hilary's library history</p>
+              </div>
+            </div>
+            <div class="year-bars" aria-label="Books read by year">
+              <div class="year-row"><span>2023</span><div class="bar-track"><span style="width: 82%"></span></div><strong>82</strong></div>
+              <div class="year-row"><span>2024</span><div class="bar-track"><span style="width: 90%"></span></div><strong>90</strong></div>
+              <div class="year-row"><span>2025</span><div class="bar-track"><span style="width: 98%"></span></div><strong>98</strong></div>
+              <div class="year-row"><span>2026</span><div class="bar-track"><span style="width: 41%"></span></div><strong>41</strong></div>
+            </div>
+          </section>
+
+          <section class="profile-panel" aria-labelledby="genres-title">
+            <div class="section-heading">
+              <div>
+                <h2 id="genres-title">Preferred genres</h2>
+                <p>What Hilary reaches for most often</p>
+              </div>
+            </div>
+            <div class="genre-cloud">
+              <span style="--genre-size: 64%">Thrillers</span>
+              <span style="--genre-size: 57%">Horror</span>
+              <span style="--genre-size: 49%">Historical fiction</span>
+              <span style="--genre-size: 31%">Literary mystery</span>
+              <span style="--genre-size: 24%">Gothic</span>
+            </div>
+          </section>
+
+          <section class="profile-panel" aria-labelledby="now-title">
+            <div class="rail-heading">
+              <div>
+                <h2 id="now-title">Now reading</h2>
+                <p>Active shelves across formats</p>
+              </div>
+            </div>
+            <div class="rail profile-rail" id="profileNowRail"></div>
+          </section>
+
+          <section class="profile-panel" aria-labelledby="faves-title">
+            <div class="rail-heading">
+              <div>
+                <h2 id="faves-title">Favourites of the year</h2>
+                <p>The 2026 shelf Hilary would probably recommend too intensely</p>
+              </div>
+            </div>
+            <div class="favourites-grid">
+              <article><strong>The Saint of Locked Rooms</strong><span>Historical thriller</span></article>
+              <article><strong>Mother of Knives</strong><span>Horror</span></article>
+              <article><strong>A Map of Rotten Stars</strong><span>Gothic mystery</span></article>
+            </div>
+          </section>
+
+          <section class="profile-panel" aria-labelledby="all-time-title">
+            <div class="rail-heading">
+              <div>
+                <h2 id="all-time-title">All-time favourites</h2>
+                <p>Permanent personality evidence</p>
+              </div>
+            </div>
+            <div class="favourites-grid">
+              <article><strong>Rebecca</strong><span>Daphne du Maurier</span></article>
+              <article><strong>Beloved</strong><span>Toni Morrison</span></article>
+              <article><strong>The Secret History</strong><span>Donna Tartt</span></article>
+            </div>
+          </section>
+        </section>
+
+        <section class="settings-view hidden" id="settingsView" aria-label="Settings">
+          <section class="settings-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Account</h2>
+                <p>Identity, contact, and profile visibility</p>
+              </div>
+            </div>
+            <div class="settings-list">
+              <label class="settings-row">
+                <span><strong>Email address</strong><small>Used for sync and account recovery</small></span>
+                <input type="email" value="hilary.reader@example.com" />
+              </label>
+              <label class="settings-row">
+                <span><strong>Display name</strong><small>Shown on profile and shared shelves</small></span>
+                <input type="text" value="Hilary" />
+              </label>
+              <label class="settings-row">
+                <span><strong>Pronouns</strong><small>Optional public profile field</small></span>
+                <input type="text" value="she/they" />
+              </label>
+            </div>
+          </section>
+
+          <section class="settings-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Appearance</h2>
+                <p>Keep the app comfortable for long sessions</p>
+              </div>
+            </div>
+            <div class="theme-switcher settings-theme" role="group" aria-label="Theme">
+              <button class="theme-option active" data-theme="light" type="button">Light</button>
+              <button class="theme-option" data-theme="deepwater" type="button">Deepwater</button>
+              <button class="theme-option" data-theme="dark" type="button">Dark</button>
+              <button class="theme-option" data-theme="night" type="button">Night</button>
+              <button class="theme-option" data-theme="bookstore" type="button">Bookstore</button>
+              <button class="theme-option" data-theme="vaporwave" type="button">Vaporwave</button>
+            </div>
+          </section>
+
+          <section class="settings-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Preferences</h2>
+                <p>Standard controls we can wire up later</p>
+              </div>
+            </div>
+            <div class="toggle-list">
+              <label><input type="checkbox" checked /> Sync reading progress</label>
+              <label><input type="checkbox" checked /> Show analytics on profile</label>
+              <label><input type="checkbox" /> Make profile public</label>
+              <label><input type="checkbox" checked /> Send release reminders</label>
+            </div>
+          </section>
+        </section>
+
+        <section class="add-title-view hidden" id="addTitleView" aria-label="Add title">
+          <div class="flow-header">
+            <button class="ghost-button" id="backToLibrary" type="button">Back</button>
+            <button class="icon-button" id="exitAddTitle" type="button" aria-label="Exit add title" title="Exit">×</button>
+          </div>
+          <section class="settings-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Add a new title</h2>
+                <p>Start with the essentials. We can expand this into imports and metadata matching later.</p>
+              </div>
+            </div>
+            <div class="settings-list">
+              <label class="settings-row">
+                <span><strong>Title</strong><small>Name of the book, volume, issue, or audiobook</small></span>
+                <input type="text" placeholder="e.g. The Last House on Needless Street" />
+              </label>
+              <label class="settings-row">
+                <span><strong>Creator</strong><small>Author, artist, publisher, or narrator</small></span>
+                <input type="text" placeholder="Author or creator" />
+              </label>
+              <label class="settings-row">
+                <span><strong>Format</strong><small>How this title should open in Toby</small></span>
+                <select>
+                  <option>Ebook</option>
+                  <option>Audiobook</option>
+                  <option>Comic</option>
+                  <option>Manga</option>
+                </select>
+              </label>
+            </div>
+            <div class="detail-actions add-actions">
+              <button class="primary-button" type="button" id="saveTitleButton">Save draft</button>
+              <button class="ghost-button" type="button" id="cancelAddTitle">Cancel</button>
+            </div>
+          </section>
+        </section>
+
+        <section class="reader-stage hidden" id="readerStage" aria-label="Reader preview">
+          <div class="reader-toolbar">
+            <button class="icon-button" id="closeReader" type="button" aria-label="Close reader" title="Close reader">×</button>
+            <strong id="readerTitle">Reader</strong>
+            <div class="reader-tools" aria-label="Reader tools">
+              <button class="icon-button" type="button" aria-label="Previous page" title="Previous page">‹</button>
+              <button class="icon-button" type="button" aria-label="Panel zoom" title="Panel zoom">▢</button>
+              <button class="icon-button" type="button" aria-label="Next page" title="Next page">›</button>
+            </div>
+          </div>
+          <div class="reader-pages" id="readerPages"></div>
+        </section>
+
+        <section class="audio-dock hidden" id="audioDock" aria-label="Audiobook player">
+          <button class="icon-button audio-close" id="closeAudio" type="button" aria-label="Close audio player" title="Close audio player">×</button>
+          <div>
+            <span class="pill">Now Playing</span>
+            <h2 id="audioTitle">Audiobook</h2>
+            <p id="audioMeta">Narrator</p>
+          </div>
+          <div class="audio-controls">
+            <button class="icon-button" type="button" aria-label="Back 30 seconds" title="Back 30 seconds">↺</button>
+            <button class="play-button" id="playButton" type="button" aria-label="Play or pause">▶</button>
+            <button class="icon-button" type="button" aria-label="Forward 30 seconds" title="Forward 30 seconds">↻</button>
+            <button class="ghost-button" id="speedButton" type="button">1.25x</button>
+          </div>
+          <div class="audio-progress">
+            <span>2:14:08</span>
+            <div class="progress-track"><span style="width: 46%"></span></div>
+            <span>4:51:30</span>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary sections">
+        <button class="bottom-nav-item" data-section="comics" type="button" aria-label="Comics and manga">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M5 4h10.5A3.5 3.5 0 0 1 19 7.5V20H8.5A3.5 3.5 0 0 1 5 16.5V4Z" />
+              <path d="M9 8h6M9 12h6M9 16h4" />
+            </svg>
+          </span>
+          <small>Comics</small>
+        </button>
+        <button class="bottom-nav-item" data-section="books" type="button" aria-label="Books">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21V5.5Z" />
+              <path d="M5 18.5A2.5 2.5 0 0 1 7.5 16H20M9 7h7M9 11h5" />
+            </svg>
+          </span>
+          <small>Books</small>
+        </button>
+        <button class="bottom-nav-item" data-section="library" type="button" aria-label="Library">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+              <path d="M7 4v16M12 4v16M17 4v16" />
+            </svg>
+          </span>
+          <small>Library</small>
+        </button>
+        <button class="bottom-nav-item" data-section="audio" type="button" aria-label="Audio">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M7 9v6M12 6v12M17 10v4" />
+              <path d="M4 12a8 8 0 0 1 16 0" />
+            </svg>
+          </span>
+          <small>Audio</small>
+        </button>
+        <button class="bottom-nav-item active" data-section="home" type="button" aria-label="Home">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M4 11.5 12 5l8 6.5" />
+              <path d="M6.5 10.5V20h11v-9.5" />
+              <path d="M10 20v-5h4v5" />
+            </svg>
+          </span>
+          <small>Home</small>
+        </button>
+      </nav>
+    </div>
+
+    <div class="overlay hidden" id="utilitiesOverlay" role="dialog" aria-modal="true" aria-labelledby="utilitiesTitle">
+      <section class="utilities-menu">
+        <div class="flow-header">
+          <button class="ghost-button" id="utilitiesBack" type="button">Back</button>
+          <button class="icon-button" id="utilitiesExit" type="button" aria-label="Exit tools menu" title="Exit">×</button>
+        </div>
+        <h2 id="utilitiesTitle">Tools</h2>
+        <div class="utility-list">
+          <button type="button" id="utilityAddTitle">
+            <span aria-hidden="true">＋</span>
+            <strong>Add title</strong>
+            <small>Create a new library item</small>
+          </button>
+          <button type="button" id="utilitySearchLibrary">
+            <span aria-hidden="true">⌕</span>
+            <strong>Search library</strong>
+            <small>Find books, comics, manga, and audio</small>
+          </button>
+          <button type="button" id="utilityEditMetadata">
+            <span aria-hidden="true">✎</span>
+            <strong>Edit metadata</strong>
+            <small>Manage titles, creators, covers, and series</small>
+          </button>
+          <button type="button" id="utilitySync">
+            <span aria-hidden="true">⟳</span>
+            <strong>Sync data</strong>
+            <small>Update progress and library state</small>
+          </button>
+          <label class="utility-select">
+            <span aria-hidden="true">✓</span>
+            <strong>Recently finished</strong>
+            <small>
+              <select id="recentlyFinishedRange" aria-label="Recently finished timeframe">
+                <option value="30">Last 30 days</option>
+                <option value="60">Last 60 days</option>
+                <option value="90" selected>Last 90 days</option>
+                <option value="180">Last 180 days</option>
+              </select>
+            </small>
+          </label>
+          <button type="button" id="utilitySettings">
+            <span aria-hidden="true">⚙</span>
+            <strong>Settings</strong>
+            <small>Account, appearance, and preferences</small>
+          </button>
+          <button type="button" id="phonePreviewButton">
+            <span aria-hidden="true">▯</span>
+            <strong>Switch view</strong>
+            <small>Toggle mobile and desktop preview</small>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <div class="overlay hidden" id="librarySearchOverlay" role="dialog" aria-modal="true" aria-labelledby="librarySearchTitle">
+      <section class="search-modal">
+        <div class="flow-header">
+          <button class="ghost-button" id="closeSearchBack" type="button">Back</button>
+          <button class="icon-button" id="closeSearchExit" type="button" aria-label="Exit search" title="Exit">×</button>
+        </div>
+        <h2 id="librarySearchTitle">Search library</h2>
+        <label class="search overlay-search" for="librarySearchInput">
+          <span aria-hidden="true">⌕</span>
+          <input id="librarySearchInput" type="search" placeholder="Search series, authors, narrators" />
+        </label>
+        <p id="searchResultCount">Showing all titles</p>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
